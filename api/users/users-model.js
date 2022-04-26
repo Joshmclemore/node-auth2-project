@@ -27,7 +27,7 @@ function find() {
    */
   return db('users')
     .join('roles', 'users.role_id', 'roles.role_id')
-    .select('user_id', 'username')
+    .select('user_id', 'username', 'role_name')
 }
 
 
@@ -64,8 +64,8 @@ function findById(user_id) {
     }
    */
     return db('users')
-    .select('user_id', 'username', 'role_name')
     .join('roles', 'users.role_id', 'roles.role_id')
+    .select('user_id', 'username', 'role_name')
     .where('users.user_id', user_id).first()
 }
 
